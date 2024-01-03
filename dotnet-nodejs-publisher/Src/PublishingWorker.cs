@@ -121,9 +121,18 @@ public sealed class PublishingWorker : BackgroundService {
 
                     await Parallel.ForEachAsync<Func<CancellationToken, ValueTask>>(
                         [
-                            async cancellationToken => { await PackAsync("dotnet-nodejs", version.Item1.ToString(), cancellationToken); },
-                            async cancellationToken => { await PackAsync("dotnet-nodejs-linux", version.Item1.ToString(), cancellationToken); },
-                            async cancellationToken => { await PackAsync("dotnet-nodejs-win", version.Item1.ToString(), cancellationToken); }
+                            async cancellationToken => {
+                                if (!baseNugetVersions.Contains(version.Item1))
+                                    await PackAsync("dotnet-nodejs", version.Item1.ToString(), cancellationToken);
+                            },
+                            async cancellationToken => {
+                                if (!linuxNugetVersions.Contains(version.Item1))
+                                    await PackAsync("dotnet-nodejs-linux", version.Item1.ToString(), cancellationToken);
+                            },
+                            async cancellationToken => {
+                                if (!winNugetVersions.Contains(version.Item1))
+                                    await PackAsync("dotnet-nodejs-win", version.Item1.ToString(), cancellationToken);
+                            }
                         ],
                         new ParallelOptions { MaxDegreeOfParallelism = 3, CancellationToken = cancellationToken },
                         async (func, cancellationToken) => await func(cancellationToken)
