@@ -1,0 +1,12 @@
+on:
+  schedule:
+  - cron: "0 1 * * *"
+
+jobs:
+  publish:
+    name: Publish latest NodeJs versions
+    runs-on: windows-latest
+    steps:
+      - name: Run Publisher
+        run: dotnet run -- --Minoibno:Dotnet:NodeJs:Publisher:NuGetApiKey=${{ secrets.NUGET_API_KEY }}
+        working-directory: ./dotnet-nodejs-publisher
