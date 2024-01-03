@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Run Publisher
         run: dotnet run -- --Minoibno:Dotnet:NodeJs:Publisher:NuGetApiKey=${{ secrets.NUGET_API_KEY }}
-        working-directory: ./dotnet-nodejs-publisher
+        working-directory: dotnet-nodejs-publisher
