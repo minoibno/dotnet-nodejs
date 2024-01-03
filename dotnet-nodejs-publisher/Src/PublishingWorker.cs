@@ -43,17 +43,26 @@ public sealed class PublishingWorker : BackgroundService {
 
             NuGetVersion minimumNodeJsVersion = NuGetVersion.Parse("18.0.0");
 
-            SourceCacheContext cache = new();
-            SourceRepository? repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
-            FindPackageByIdResource? resource = await repository.GetResourceAsync<FindPackageByIdResource>(cancellationToken);
+            SourceRepository repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
+            FindPackageByIdResource resource = await repository.GetResourceAsync<FindPackageByIdResource>(cancellationToken);
 
-            HashSet<NuGetVersion> nugetVersions = (await resource.GetAllVersionsAsync("dotnet-nodejs", cache, nugetLogger, default)).ToHashSet();
+            HashSet<NuGetVersion> baseNugetVersions = (await resource.GetAllVersionsAsync("dotnet-nodejs", new(), nugetLogger, default)).ToHashSet();
+            HashSet<NuGetVersion> winNugetVersions =
+                (await resource.GetAllVersionsAsync("dotnet-nodejs-win", new(), nugetLogger, default)).ToHashSet();
+
+            HashSet<NuGetVersion> linuxNugetVersions =
+                (await resource.GetAllVersionsAsync("dotnet-nodejs-linux", new(), nugetLogger, default)).ToHashSet();
 
             await BuildAsync(cancellationToken);
 
             foreach ((NuGetVersion, NodeVersionResource val) version in nodeJsVersions
                          .Select(val => (NuGetVersion.Parse(val.Version.TrimStart('v')), val))
-                         .Where(val => val.Item1 >= minimumNodeJsVersion && !nugetVersions.Contains(val.Item1))
+                         .Where(
+                             val => val.Item1 >= minimumNodeJsVersion &&
+                                 (!baseNugetVersions.Contains(val.Item1) ||
+                                     !winNugetVersions.Contains(val.Item1) ||
+                                     !linuxNugetVersions.Contains(val.Item1))
+                         )
                          .OrderBy(val => val.Item1)) {
                 log.LogInformation("Processing NodeJs<{Version}>", version.val.Version);
                 cancellationToken.ThrowIfCancellationRequested();
