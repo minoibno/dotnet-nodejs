@@ -162,7 +162,7 @@ public sealed class PublishingWorker : BackgroundService {
     }
 
     private static async Task BuildAsync(CancellationToken cancellationToken) {
-        Process? build = Process.Start(new ProcessStartInfo("dotnet.exe", "build") { WorkingDirectory = @"..\" });
+        Process? build = Process.Start(new ProcessStartInfo("dotnet.exe", "build -c Release") { WorkingDirectory = @"..\" });
 
         if (build == null)
             throw new InvalidOperationException("Could not start process");
