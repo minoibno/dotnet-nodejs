@@ -125,8 +125,6 @@ public sealed class PublishingWorker : BackgroundService {
                     if (Directory.Exists(@"..\package\nodejs"))
                         Directory.Delete(@"..\package\nodejs", true);
                 }
-
-                break;
             }
 
             PackageUpdateResource packageUpdateResource = await repository.GetResourceAsync<PackageUpdateResource>(cancellationToken);
