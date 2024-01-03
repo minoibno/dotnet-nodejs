@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-nodejs", "dotnet-nodejs\dotnet-nodejs.csproj", "{F43021F5-9704-4B6C-98E7-D5235C29077A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-nodejs-publisher", "dotnet-nodejs-publisher\dotnet-nodejs-publisher.csproj", "{6217BF41-4F68-4A22-9EA9-3745DA0F1A20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-nodejs-win", "dotnet-nodejs-win\dotnet-nodejs-win.csproj", "{E0194EA8-AB57-4D95-B0BD-7CA32652589A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-nodejs-linux", "dotnet-nodejs-linux\dotnet-nodejs-linux.csproj", "{0547C0B7-B513-46E1-82E0-2057C578C075}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F43021F5-9704-4B6C-98E7-D5235C29077A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F43021F5-9704-4B6C-98E7-D5235C29077A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F43021F5-9704-4B6C-98E7-D5235C29077A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F43021F5-9704-4B6C-98E7-D5235C29077A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6217BF41-4F68-4A22-9EA9-3745DA0F1A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6217BF41-4F68-4A22-9EA9-3745DA0F1A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6217BF41-4F68-4A22-9EA9-3745DA0F1A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6217BF41-4F68-4A22-9EA9-3745DA0F1A20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0194EA8-AB57-4D95-B0BD-7CA32652589A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0194EA8-AB57-4D95-B0BD-7CA32652589A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0194EA8-AB57-4D95-B0BD-7CA32652589A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0194EA8-AB57-4D95-B0BD-7CA32652589A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0547C0B7-B513-46E1-82E0-2057C578C075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0547C0B7-B513-46E1-82E0-2057C578C075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0547C0B7-B513-46E1-82E0-2057C578C075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0547C0B7-B513-46E1-82E0-2057C578C075}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

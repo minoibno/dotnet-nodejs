@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>Minoibno.Dotnet.NodeJs</RootNamespace>
+        <OutputType>Exe</OutputType>
+        <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+        <LangVersion>12</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>dotnet-nodejs-win</PackageId>
+        <Description>Install NodeJs using NuGet and dotnet tools (Windows only)</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageTags>tool,tools,node,nodejs,node.js,npm,npx,js,win,windows</PackageTags>
+        <PackageReleaseNotes>$(RepositoryUrl)/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ToolCommandName>dotnet-nodejs</ToolCommandName>
+        <PackAsTool>true</PackAsTool>
+        <PackRelease>true</PackRelease>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\package\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\package\icon.png" Pack="true" PackagePath="\"/>
+        <None Include="..\package\nodejs\win-x64.zip" Pack="true" PackagePath="\content\nodejs\win-x64.zip"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\dotnet-nodejs\dotnet-nodejs.csproj"/>
+    </ItemGroup>
+
+</Project>

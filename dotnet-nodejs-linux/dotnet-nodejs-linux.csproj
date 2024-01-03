@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>Minoibno.Dotnet.NodeJs</RootNamespace>
+        <OutputType>Exe</OutputType>
+        <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+        <LangVersion>12</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>dotnet-nodejs-linux</PackageId>
+        <Description>Install NodeJs using NuGet and dotnet tools (Linux only)</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageTags>tool,tools,node,nodejs,node.js,npm,npx,js,linux</PackageTags>
+        <PackageReleaseNotes>$(RepositoryUrl)/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ToolCommandName>dotnet-nodejs</ToolCommandName>
+        <PackAsTool>true</PackAsTool>
+        <PackRelease>true</PackRelease>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\package\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\package\icon.png" Pack="true" PackagePath="\"/>
+        <None Include="..\package\nodejs\linux-x64.tar.gz" Pack="true" PackagePath="\content\nodejs\linux-x64.tar.gz"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\dotnet-nodejs\dotnet-nodejs.csproj"/>
+    </ItemGroup>
+
+</Project>

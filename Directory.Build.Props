@@ -1,0 +1,18 @@
+﻿<Project>
+
+    <PropertyGroup>
+        <ImplicitUsings>true</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <NoWarn>NETSDK1138;NU5110;NU5111</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Copyright>Copyright (c) minoibno 2023</Copyright>
+        <Authors>minoibno</Authors>
+        <RepositoryUrl>https://github.com/minoibno/dotnet-nodejs</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+</Project>
