@@ -145,20 +145,22 @@ public sealed class PublishingWorker : BackgroundService {
                 }
             }
 
-            PackageUpdateResource packageUpdateResource = await repository.GetResourceAsync<PackageUpdateResource>(cancellationToken);
+            if (Directory.Exists(@"..\packages\")) {
+                PackageUpdateResource packageUpdateResource = await repository.GetResourceAsync<PackageUpdateResource>(cancellationToken);
 
-            await packageUpdateResource.Push(
-                Directory.GetFiles(@"..\packages\"),
-                null,
-                5 * 60,
-                false,
-                _ => options.NuGetApiKey,
-                _ => null,
-                false,
-                true,
-                null,
-                nugetLogger
-            );
+                await packageUpdateResource.Push(
+                    Directory.GetFiles(@"..\packages\"),
+                    null,
+                    5 * 60,
+                    false,
+                    _ => options.NuGetApiKey,
+                    _ => null,
+                    false,
+                    true,
+                    null,
+                    nugetLogger
+                );
+            }
         } catch (ObjectDisposedException) {
             if (!cancellationToken.IsCancellationRequested)
                 throw;
